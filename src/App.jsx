@@ -18,7 +18,7 @@ function App() {
         </div>
       </div>
 
-      <div className="theme-layout">
+      {/* <div className="theme-layout"> */}
         <Header />
         <Sidebar />
         <CarouselMenu />
@@ -53,7 +53,7 @@ function App() {
         </div>
 
         <Popups />
-      </div>
+      {/* </div> */}
     </>
   );
 }
