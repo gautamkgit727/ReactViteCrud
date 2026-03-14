@@ -17,7 +17,7 @@ function App() {
         </div>
         <div>
           <h1>My Test Site to deploy on git</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
+          <p>This Project created for deployment testing.</p>
           <button onClick={() => setCount((count) => count + 1)}>
             count is {count}
           </button>
