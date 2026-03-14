@@ -3,22 +3,27 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/images/fav.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Socimo</title>
+  <title>Socimo | Social Media Network</title>
 
-  <link rel="stylesheet" href="./public/css/main.min.css">
-  <link rel="stylesheet" href="./public/css/style.css">
-  <link rel="stylesheet" href="./public/css/color.css">
-  <link rel="stylesheet" href="./public/css/responsive.css">
+  <!-- Template CSS from public folder - served as static files, NOT bundled by Vite -->
+  <link rel="stylesheet" href="/css/main.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/color.css">
+  <link rel="stylesheet" href="/css/responsive.css">
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- React app bundle -->
   <script type="module" src="/src/main.jsx"></script>
-  <script src="./public/js/main.min.js"></script>
-  <script src="./public/js/date-time.js"></script>
-  <script src="./public/js/script.js"></script>
+
+  <!-- Template JS - loaded as plain scripts AFTER react, NOT bundled by Vite -->
+  <script src="/js/main.min.js" defer></script>
+  <script src="/js/date-time.js" defer></script>
+  <script src="/js/script.js" defer></script>
 </body>
 
 </html>

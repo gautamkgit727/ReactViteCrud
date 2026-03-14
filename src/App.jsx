@@ -9,7 +9,6 @@ import Popups from './components/Popups';
 function App() {
   return (
     <>
-
       {/* Page Loader */}
       <div className="page-loader" id="page-loader">
         <div className="loader">
@@ -20,37 +19,19 @@ function App() {
       </div>
 
       <div className="theme-layout">
-
-        {/* Header (includes responsive header + desktop header) */}
         <Header />
-
-        {/* Left Slide Navigation */}
         <Sidebar />
-
-        {/* Top Carousel Menu */}
         <CarouselMenu />
 
-        {/* Main Content */}
         <section>
           <div className="gap">
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
                   <div id="page-contents" className="row merged20">
-
-                    {/* Left Sidebar */}
-                    <div className="col-lg-3">
-                      <LeftSidebar />
-                    </div>
-
-                    {/* Main Feed */}
+                    <div className="col-lg-3"><LeftSidebar /></div>
                     <MainFeed />
-
-                    {/* Right Sidebar */}
-                    <div className="col-lg-3">
-                      <RightSidebar />
-                    </div>
-
+                    <div className="col-lg-3"><RightSidebar /></div>
                   </div>
                 </div>
               </div>
@@ -58,7 +39,6 @@ function App() {
           </div>
         </section>
 
-        {/* Footer */}
         <figure className="bottom-mockup">
           <img src="images/footer.png" alt="" />
         </figure>
@@ -72,9 +52,7 @@ function App() {
           </div>
         </div>
 
-        {/* All Popups, Modals, Chat Box */}
         <Popups />
-
       </div>
     </>
   );
