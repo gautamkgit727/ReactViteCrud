@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/gautamkgit727/ReactViteCrud.git",
+  "homepage": "https://gautamkgit727.github.io/ReactViteCrud",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
