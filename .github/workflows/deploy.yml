@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages
+name: CI/CD - Build and Deploy
 
 on:
   push:
     branches:
-      - master # runs when you push to main branch
+      - master
 
 jobs:
   deploy:
@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Run Lint
+        run: npm run lint
+
       - name: Build project
         run: npm run build
 
@@ -29,3 +32,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+## Your CI/CD Flow Now Looks Like:
+
+# Push Code
+#     ↓
+# Install Dependencies
+#     ↓
+# Lint Check → ❌ fail = stops, no bad code deploys
+#     ↓
+# Build → ❌ fail = stops, no broken build deploys
+#     ↓
+# Deploy ✅ → site updates only if everything passed!
