@@ -9,6 +9,7 @@ import Popups from './components/Popups';
 function App() {
   return (
     <>
+
       {/* Page Loader */}
       <div className="page-loader" id="page-loader">
         <div className="loader">
