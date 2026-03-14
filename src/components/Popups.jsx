@@ -339,7 +339,7 @@ const Popups = () => {
       </div>
 
       {/* Auto Popup */}
-      <div className="auto-popup">
+      {/* <div className="auto-popup">
         <div className="popup-innner">
           <div className="popup-head">
             <h4>We want to hear from you!</h4>
@@ -358,7 +358,7 @@ const Popups = () => {
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Image Modal */}
       <div className="modal fade" id="img-comt">
