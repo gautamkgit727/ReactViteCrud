@@ -1,4 +1,5 @@
 const LeftSidebar = () => {
+  const now = new Date();
   const recentBlogs = [
     { img: "recentlink-1.jpg", title: "Moira's fade reach much farther...", time: "2 weeks ago" },
     { img: "recentlink-2.jpg", title: "Daniel asks The voice of doomfist...", time: "3 months ago" },
@@ -6,6 +7,13 @@ const LeftSidebar = () => {
   ];
 
   const usefulLinks = ["about", "career", "advertise", "socimo Apps", "socimo Blog", "Help", "socimo Gifts", "content policy", "User Policy"];
+
+  // Date
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const dateStr = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+  const dateEl = document.getElementById("date");
+  if (dateEl) dateEl.textContent = dateStr;
 
   return (
     <aside className="sidebar static left">
@@ -19,7 +27,7 @@ const LeftSidebar = () => {
             <span id="point">:</span>
             <span id="min">00</span>
           </div>
-          <span id="date"></span>
+          <span id="date">{dateStr}</span>
         </div>
       </div>
 

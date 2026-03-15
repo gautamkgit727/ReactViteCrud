@@ -1,4 +1,32 @@
+import { useState, useEffect } from 'react';
+
 const Sidebar = () => {
+  const [openMenus, setOpenMenus] = useState({ 0: true }); // Home open by default
+
+  // Toggle submenu open/close
+  const toggleMenu = (index) => {
+    setOpenMenus(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
+  // Sidebar collapse/expand — mirrors what the template's JS does
+  useEffect(() => {
+    const sideMenuBtns = document.querySelectorAll('#side-menu, #side-menu2');
+    const body = document.body;
+
+    const handleToggle = () => {
+      body.classList.toggle('sidebar-collapse');
+    };
+
+    sideMenuBtns.forEach(btn => btn.addEventListener('click', handleToggle));
+
+    return () => {
+      sideMenuBtns.forEach(btn => btn.removeEventListener('click', handleToggle));
+    };
+  }, []);
+
   const menuItems = [
     {
       label: "Home", active: true,
@@ -100,34 +128,54 @@ const Sidebar = () => {
   return (
     <nav className="sidebar">
       <ul className="menu-slide">
+
         {menuItems.map((item, i) => (
-          <li key={i} className={`menu-item-has-children${item.active ? " active" : ""}`}>
-            <a href="#">
+          <li
+            key={i}
+            className={`menu-item-has-children${item.active ? " active" : ""}${openMenus[i] ? " open" : ""}`}
+          >
+            <a href="#" onClick={(e) => { e.preventDefault(); toggleMenu(i); }}>
               <i>{item.icon}</i> {item.label}
             </a>
-            <ul className="submenu">
-              {item.submenu.map((sub, j) => (
-                <li key={j}><a href={sub.href}>{sub.label}</a></li>
-              ))}
-            </ul>
+            {/* Controlled submenu — only render when open */}
+            {openMenus[i] && (
+              <ul className="submenu" style={{ display: "block" }}>
+                {item.submenu.map((sub, j) => (
+                  <li key={j}><a href={sub.href}>{sub.label}</a></li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
+
         {singleItems.map((item, i) => (
-          <li key={i}>
+          <li key={`single-${i}`}>
             <a href={item.href}><i>{item.icon}</i> {item.label}</a>
           </li>
         ))}
-        <li className="menu-item-has-children">
-          <a href="#">
-            <i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-smile"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></i> Development Tools
+
+        {/* Development Tools */}
+        <li className={`menu-item-has-children${openMenus['dev'] ? " open" : ""}`}>
+          <a href="#" onClick={(e) => { e.preventDefault(); toggleMenu('dev'); }}>
+            <i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-smile">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+            </i> Development Tools
           </a>
-          <ul className="submenu">
-            <li><a href="widgets.html">Widgets Collection</a></li>
-            <li><a href="development-component.html">Web Component</a></li>
-            <li><a href="development-elements.html">Web Elements</a></li>
-            <li><a href="loader-spiners.html">Loader Spiners</a></li>
-          </ul>
+          {openMenus['dev'] && (
+            <ul className="submenu" style={{ display: "block" }}>
+              <li><a href="widgets.html">Widgets Collection</a></li>
+              <li><a href="development-component.html">Web Component</a></li>
+              <li><a href="development-elements.html">Web Elements</a></li>
+              <li><a href="loader-spiners.html">Loader Spiners</a></li>
+            </ul>
+          )}
         </li>
+
       </ul>
     </nav>
   );
