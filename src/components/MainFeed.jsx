@@ -1,6 +1,8 @@
+import { useState } from "react";
 import PostActions from './PostActions';
 import PostStats from './PostStats';
 import PostMenu from './PostMenu';
+import Carousel from './Carousel';
 
 const VerifiedBadge = ({ color = "#7fba00" }) => (
   <em>
@@ -65,46 +67,32 @@ const MainFeed = () => {
         </div>
       </div>
 
-      {/* ===== RECENT STORIES - Horizontal like template ===== */}
+      {/* ===== RECENT STORIES ===== */}
       <div className="story-card">
         <div className="story-title">
           <h5>Recent Stories</h5>
           <a href="#">See all</a>
         </div>
-
-        {/* Horizontal row matching template layout */}
-        <div style={{
-          display: "flex",
-          flexDirection: "row",
-          overflowX: "auto",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}>
-          {/* Add Your Story */}
+        <div style={{ display: "flex", overflowX: "auto", scrollbarWidth: "none" }}>
           <div className="story-wraper" style={{ flexShrink: 0, minWidth: "113px" }}>
             <img src="images/resources/story-card5.jpg" alt=""
               style={{ width: "100%", height: "200px", objectFit: "cover", display: "block" }} />
-            <div className="users-dp">
-              <img src="images/resources/user3.jpg" alt="" />
-            </div>
+            <div className="users-dp"><img src="images/resources/user3.jpg" alt="" /></div>
             <a className="add-new-stry" href="#"><i className="icofont-plus"></i></a>
             <span>Add Your Story</span>
           </div>
-
           {stories.map((s, i) => (
             <div className="story-wraper" key={i} style={{ flexShrink: 0, minWidth: "113px" }}>
               <img src={`images/resources/${s.bg}`} alt=""
                 style={{ width: "100%", height: "200px", objectFit: "cover", display: "block" }} />
-              <div className="users-dp">
-                <img src={`images/resources/${s.user}`} alt="" />
-              </div>
+              <div className="users-dp"><img src={`images/resources/${s.user}`} alt="" /></div>
               <span>{s.name}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ===== CHAT ROOMS - Horizontal like template ===== */}
+      {/* ===== CHAT ROOMS with arrows ===== */}
       <div className="main-wraper">
         <div className="chatroom-title">
           <i>
@@ -119,39 +107,37 @@ const MainFeed = () => {
           <a className="create-newroom" href="#">Create Room</a>
         </div>
 
-        <div style={{
-          display: "flex",
-          flexDirection: "row",
-          overflowX: "auto",
-          gap: "16px",
-          padding: "10px 0",
-          scrollbarWidth: "none",
-        }}>
-          {chatRooms.map((room, i) => (
-            <div key={i} style={{
-              display: "flex", flexDirection: "column", alignItems: "center",
-              minWidth: "120px", border: "1px solid #eee", borderRadius: "8px",
-              padding: "15px 10px", textAlign: "center", flexShrink: 0,
-            }}>
-              <div className="room-avatar" style={{ position: "relative", marginBottom: "8px" }}>
-                <img src={`images/resources/${room.img}`} alt=""
-                  style={{ width: "45px", height: "45px", borderRadius: "50%", objectFit: "cover" }} />
-                <span className={`status ${room.status}`}
-                  style={{ position: "absolute", bottom: "2px", right: "2px" }}></span>
+        <div style={{ padding: "12px 0" }}>
+          <Carousel
+            items={chatRooms}
+            itemWidth={140}
+            renderItem={(room) => (
+              <div style={{
+                display: "flex", flexDirection: "column", alignItems: "center",
+                border: "1px solid #eee", borderRadius: "8px",
+                padding: "15px 8px", textAlign: "center",
+                background: "#fff",
+              }}>
+                <div style={{ position: "relative", marginBottom: "8px" }}>
+                  <img src={`images/resources/${room.img}`} alt=""
+                    style={{ width: "45px", height: "45px", borderRadius: "50%", objectFit: "cover" }} />
+                  <span className={`status ${room.status}`}
+                    style={{ position: "absolute", bottom: "2px", right: "2px" }}></span>
+                </div>
+                <span style={{ fontSize: "13px", fontWeight: "500", marginBottom: "8px", display: "block" }}>
+                  {room.name}
+                </span>
+                <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+                  <a className="join" href="#" style={{ fontSize: "12px", padding: "4px 10px" }}>Join</a>
+                  <a className="say-hi send-mesg" href="#"><i className="icofont-facebook-messenger"></i></a>
+                </div>
               </div>
-              <span style={{ fontSize: "13px", fontWeight: "500", marginBottom: "8px", display: "block" }}>
-                {room.name}
-              </span>
-              <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-                <a className="join" href="#" style={{ fontSize: "12px", padding: "4px 10px" }}>Join</a>
-                <a className="say-hi send-mesg" href="#"><i className="icofont-facebook-messenger"></i></a>
-              </div>
-            </div>
-          ))}
+            )}
+          />
         </div>
       </div>
 
-      {/* ===== SUGGESTED FRIENDS - Horizontal like template ===== */}
+      {/* ===== SUGGESTED FRIENDS with arrows ===== */}
       <div className="main-wraper">
         <div className="user-post">
           <div className="friend-info">
@@ -160,31 +146,33 @@ const MainFeed = () => {
               <ins><a href="time-line.html">Suggested</a></ins>
               <span><i className="icofont-runner-alt-1"></i> Follow similar People</span>
             </div>
-            <div style={{
-              display: "flex", flexDirection: "row", overflowX: "auto",
-              gap: "16px", padding: "10px 0", scrollbarWidth: "none",
-            }}>
-              {suggestedPeople.map((p, i) => (
-                <div key={i} style={{
-                  display: "flex", flexDirection: "column", alignItems: "center",
-                  minWidth: "150px", border: "1px solid #eee", borderRadius: "8px",
-                  padding: "15px 10px", textAlign: "center", flexShrink: 0,
-                }}>
-                  <figure style={{ margin: "0 0 8px 0" }}>
-                    <img src={`images/resources/${p.img}`} alt=""
-                      style={{ width: "80px", height: "80px", borderRadius: "8px", objectFit: "cover" }} />
-                  </figure>
-                  <span style={{ fontWeight: "600", fontSize: "14px", display: "block", marginBottom: "4px" }}>
-                    {p.name}
-                  </span>
-                  <ins style={{ fontSize: "12px", color: "#888", display: "block", marginBottom: "10px", textDecoration: "none" }}>
-                    Department of Socilolgy
-                  </ins>
-                  <a href="#" className="main-btn" data-ripple="" style={{ fontSize: "12px", padding: "6px 14px" }}>
-                    <i className="icofont-star"></i> Follow
-                  </a>
-                </div>
-              ))}
+
+            <div style={{ padding: "12px 0" }}>
+              <Carousel
+                items={suggestedPeople}
+                itemWidth={180}
+                renderItem={(p) => (
+                  <div style={{
+                    display: "flex", flexDirection: "column", alignItems: "center",
+                    border: "1px solid #eee", borderRadius: "8px",
+                    padding: "15px 10px", textAlign: "center", background: "#fff",
+                  }}>
+                    <figure style={{ margin: "0 0 8px 0" }}>
+                      <img src={`images/resources/${p.img}`} alt=""
+                        style={{ width: "100px", height: "100px", borderRadius: "8px", objectFit: "cover" }} />
+                    </figure>
+                    <span style={{ fontWeight: "600", fontSize: "14px", display: "block", marginBottom: "4px" }}>
+                      {p.name}
+                    </span>
+                    <ins style={{ fontSize: "12px", color: "#1db9aa", display: "block", marginBottom: "10px", textDecoration: "none" }}>
+                      Department of Socilolgy
+                    </ins>
+                    <a href="#" className="main-btn" data-ripple="" style={{ fontSize: "12px", padding: "6px 14px" }}>
+                      <i className="icofont-star"></i> Follow
+                    </a>
+                  </div>
+                )}
+              />
             </div>
           </div>
         </div>
@@ -203,9 +191,8 @@ const MainFeed = () => {
             <div className="post-meta">
               <p>Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.</p>
               <div className="aud-vid">
-                <audio id="plyr-audio-player" className="audio-player" controls>
+                <audio className="audio-player" controls>
                   <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mp3" />
-                  <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.ogg" type="audio/ogg" />
                 </audio>
               </div>
               <PostStats /><PostActions />
@@ -229,7 +216,7 @@ const MainFeed = () => {
               <p>Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.</p>
               <div className="aud-vid">
                 <div className="video-player">
-                  <iframe src="https://www.youtube.com/embed/RBfJR4oRC0k?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
+                  <iframe src="https://www.youtube.com/embed/RBfJR4oRC0k?modestbranding=1&rel=0"
                     allowFullScreen allow="autoplay" title="video"></iframe>
                 </div>
               </div>
@@ -281,69 +268,47 @@ const MainFeed = () => {
         </div>
       </div>
 
-      {/* ===== VIDEOS PLAYLIST - Horizontal like template ===== */}
+      {/* ===== VIDEOS PLAYLIST with arrows ===== */}
       <div className="main-wraper">
         <div className="wraper-title">
           <span><i className="icofont-video-alt"></i> Videos Play List</span>
           <a href="videos.html">See all Videos</a>
         </div>
-
-        {/* Horizontal row matching template — 3 visible at a time */}
-        <div style={{
-          display: "flex",
-          flexDirection: "row",
-          overflowX: "auto",
-          gap: "12px",
-          padding: "10px 0",
-          scrollbarWidth: "none",
-        }}>
-          {videos.map((v, i) => (
-            <div key={i} style={{
-              flexShrink: 0,
-              minWidth: "calc(33% - 8px)",
-              position: "relative",
-              borderRadius: "8px",
-              overflow: "hidden",
-              backgroundColor: "#000",
-            }}>
-              {/* Thumbnail via YouTube */}
-              <a href={v.href} target="_blank" rel="noreferrer" style={{ display: "block" }}>
-                <img
-                  src={`https://img.youtube.com/vi/${v.href.split('v=')[1]}/mqdefault.jpg`}
-                  alt={v.name}
-                  style={{ width: "100%", height: "130px", objectFit: "cover", display: "block", opacity: 0.85 }}
-                />
-                {/* Play button overlay */}
-                <span style={{
-                  position: "absolute", top: "40%", left: "50%",
-                  transform: "translate(-50%,-50%)",
-                  width: "36px", height: "36px", background: "rgba(255,255,255,0.9)",
-                  borderRadius: "50%", display: "flex", alignItems: "center",
-                  justifyContent: "center",
-                }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#333">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                </span>
-              </a>
-              {/* User info */}
-              <div className="posted-user" style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 8px", background: "#fff",
-              }}>
-                <img src={`images/resources/${v.user}`} alt=""
-                  style={{ width: "28px", height: "28px", borderRadius: "50%", objectFit: "cover" }} />
-                <span style={{ fontSize: "12px", fontWeight: "500" }}>{v.name}</span>
-              </div>
-              <div className="vid-info" style={{
-                display: "flex", justifyContent: "space-between",
-                padding: "4px 8px 8px", background: "#fff", fontSize: "11px", color: "#888",
-              }}>
-                <span>{v.time}</span>
-                <span><i className="icofont-eye-open"></i> {v.views}</span>
-              </div>
-            </div>
-          ))}
+        <div style={{ padding: "12px 0" }}>
+          <Carousel
+            items={videos}
+            itemWidth={170}
+            renderItem={(v) => {
+              const videoId = v.href.split('v=')[1];
+              return (
+                <div style={{ borderRadius: "8px", overflow: "hidden", background: "#000" }}>
+                  <a href={v.href} target="_blank" rel="noreferrer" style={{ display: "block", position: "relative" }}>
+                    <img src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`} alt={v.name}
+                      style={{ width: "100%", height: "110px", objectFit: "cover", display: "block", opacity: 0.85 }} />
+                    <span style={{
+                      position: "absolute", top: "50%", left: "50%",
+                      transform: "translate(-50%,-50%)",
+                      width: "32px", height: "32px", background: "rgba(255,255,255,0.9)",
+                      borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center",
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#333">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                    </span>
+                  </a>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 8px", background: "#fff" }}>
+                    <img src={`images/resources/${v.user}`} alt=""
+                      style={{ width: "24px", height: "24px", borderRadius: "50%", objectFit: "cover" }} />
+                    <span style={{ fontSize: "11px", fontWeight: "500" }}>{v.name}</span>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", padding: "4px 8px 8px", background: "#fff", fontSize: "10px", color: "#888" }}>
+                    <span>{v.time}</span>
+                    <span><i className="icofont-eye-open"></i> {v.views}</span>
+                  </div>
+                </div>
+              );
+            }}
+          />
         </div>
       </div>
 
@@ -359,7 +324,7 @@ const MainFeed = () => {
             </div>
             <div className="post-meta">
               <figure>
-                <a data-toggle="modal" data-target="#img-comt" href="images/resources/album1.jpg">
+                <a href="images/resources/album1.jpg">
                   <img src="images/resources/study.jpg" alt="" />
                 </a>
               </figure>
@@ -386,14 +351,14 @@ const MainFeed = () => {
                 <div className="img-bunch">
                   <div className="row">
                     <div className="col-lg-6 col-md-6 col-sm-6">
-                      <figure><a data-toggle="modal" data-target="#img-comt" href="images/resources/album1.jpg"><img src="images/resources/album1.jpg" alt="" /></a></figure>
-                      <figure><a data-toggle="modal" data-target="#img-comt" href="images/resources/album2.jpg"><img src="images/resources/album2.jpg" alt="" /></a></figure>
+                      <figure><a href="images/resources/album1.jpg"><img src="images/resources/album1.jpg" alt="" /></a></figure>
+                      <figure><a href="images/resources/album2.jpg"><img src="images/resources/album2.jpg" alt="" /></a></figure>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-6">
-                      <figure><a data-toggle="modal" data-target="#img-comt" href="images/resources/album6.jpg"><img src="images/resources/album6.jpg" alt="" /></a></figure>
-                      <figure><a data-toggle="modal" data-target="#img-comt" href="images/resources/album5.jpg"><img src="images/resources/album5.jpg" alt="" /></a></figure>
+                      <figure><a href="images/resources/album6.jpg"><img src="images/resources/album6.jpg" alt="" /></a></figure>
+                      <figure><a href="images/resources/album5.jpg"><img src="images/resources/album5.jpg" alt="" /></a></figure>
                       <figure>
-                        <a data-toggle="modal" data-target="#img-comt" href="images/resources/album4.jpg"><img src="images/resources/album4.jpg" alt="" /></a>
+                        <a href="images/resources/album4.jpg"><img src="images/resources/album4.jpg" alt="" /></a>
                         <div className="more-photos"><span>+15</span></div>
                       </figure>
                     </div>
@@ -419,7 +384,7 @@ const MainFeed = () => {
               <span><i className="icofont-globe"></i> published: Sep,15 2020</span>
             </div>
             <div className="post-meta">
-              <em><a href="https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538" target="_blank" rel="noreferrer">https://themeforest.net/item/winku-social-network-toolkit...</a></em>
+              <em><a href="https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538" target="_blank" rel="noreferrer">https://themeforest.net/item/winku...</a></em>
               <figure><span>fetched-image</span><img src="images/resources/laptop.png" alt="" /></figure>
               <a href="https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538" className="post-title" target="_blank" rel="noreferrer">Winku Social Network with Company Pages Theme</a>
               <p>"Winku" is a social community mobile app kit with features for sharing blog, posts, timeline, groups, and much more.</p>
@@ -429,7 +394,7 @@ const MainFeed = () => {
         </div>
       </div>
 
-      {/* Sponsored Carousel */}
+      {/* Sponsored */}
       <div className="main-wraper">
         <div className="user-post">
           <div className="friend-info">
