@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PostActions from './PostActions';
 import PostStats from './PostStats';
 import PostMenu from './PostMenu';
