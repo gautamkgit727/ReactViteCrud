@@ -31,6 +31,7 @@ const MainFeed = () => {
     { img: "speak-1.jpg", name: "Amy Watson" },
     { img: "speak-2.jpg", name: "Muhammad Khan" },
     { img: "speak-3.jpg", name: "Sadia Gill" },
+    { img: "speak-2.jpg", name: "Ahmed Hassan" },
   ];
 
   const videos = [
