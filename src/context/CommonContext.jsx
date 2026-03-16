@@ -1,3 +1,4 @@
+// eslint-disable-next-line react-refresh/only-export-components
 import { createContext, useContext, useMemo, useState, useRef, useEffect } from "react";
 
 const commonContext = createContext(null);
@@ -29,28 +30,27 @@ const CommonContextData = ({ children }) => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
-    // ==================== CONTEXT VALUE ==================
 
+    // ==================== CONTEXT VALUE ==================
     const value = useMemo(() => ({
         sidebarToggle, isOpenSidebar, bodySidebarToggle, sidebarRef
     }), [isOpenSidebar]);
-
 
     return (
         <commonContext.Provider value={value}>
             {children}
         </commonContext.Provider>
-    )
-}
+    );
+};
 
 // ==================== CUSTOM HOOK ==================
-
+// eslint-disable-next-line react-refresh/only-export-components
 const useCommonData = () => {
-    const context = useContext(commonContext)
+    const context = useContext(commonContext);
     if (!context) {
         throw new Error("useProduct must be used within ProductContextData");
     }
     return context;
-}
+};
 
-export { CommonContextData, useCommonData }
+export { CommonContextData, useCommonData };
