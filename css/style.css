@@ -1340,7 +1340,7 @@ header.transparent .topbar{
 .searches > form.active > input{
 	border: 0 none;
     border-radius: 10px 10px 0 0;
-    box-shadow: 0 9px 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 9px 10px rgba(0, 0, 0, 0.2); */
 }
 .cancel-search {
     background: #f6f6f6 none repeat scroll 0 0;
@@ -8419,7 +8419,7 @@ aside.sidebar .widget .activity-meta > i{
     color: inherit;
     position: unset;
 }
-.link-item {
+ .link-item {
     text-align: center;
     vertical-align: middle;
 }
@@ -8427,37 +8427,63 @@ aside.sidebar .widget .activity-meta > i{
     display: inline-block;
     font-size: 22px;
     transform: translateY(15px);
-    transition: all 0.3s ease-in-out 0s
+    transition: all 0.3s ease-in-out 0s;
+        padding-bottom: 10px;
 }
 .link-item > a:hover i {
     opacity: 0;
     transform: translate(0px);
     visibility: hidden;
 	vertical-align: middle;
+    transition: all 0.3s ease-in-out 0s
 }
-.link-item > a:hover p {
-    transform: translateY(-10px);
-}
+
+/* .link-item > a:hover span {
+    transform: translateY(-0px);
+    transition: all 0.3s ease-in-out 0s
+} */
 .link-item > a {
     color: #adafca;
     display: block;
     font-size: 15px;
     position: relative;
 	border-bottom: 3px solid transparent;
+    transition: all 0.3s ease-in-out 0s
 }
-.link-item > a p {
+/* .link-item > a span {
     color: #3d3d49;
     font-size: 14px;
 	font-weight: 500;
     margin: 0;
     text-transform: capitalize;
-    transform: translateY(22px);
-    transition: all 0.3s ease-in-out 0s;
+    transform: translateY(10px);
+    transition: all 0.3s ease-in-out 0s
+} */
+ .link-item > a span {
+  color: #3d3d49;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  text-transform: capitalize;
+
+  transform: translateY(15px);
+  opacity: 0;
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* hover state (text moves up) */
+.link-item > a:hover span {
+  transform: translateY(0);
+  opacity: 1;
 }
 .link-item > a:hover,
 .link-item > a.active{
     border-bottom: 3px solid;
 }
+
+
+
 .stat-tools > .box a > i {
     color: #7e7f9e;
     font-size: 16px;
