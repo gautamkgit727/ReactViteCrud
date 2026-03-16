@@ -1,4 +1,3 @@
-// eslint-disable-next-line react-refresh/only-export-components
 import { createContext, useContext, useMemo, useState, useRef, useEffect } from "react";
 
 const commonContext = createContext(null);
@@ -44,7 +43,6 @@ const CommonContextData = ({ children }) => {
 };
 
 // ==================== CUSTOM HOOK ==================
-// eslint-disable-next-line react-refresh/only-export-components
 const useCommonData = () => {
     const context = useContext(commonContext);
     if (!context) {
@@ -53,4 +51,5 @@ const useCommonData = () => {
     return context;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { CommonContextData, useCommonData };
