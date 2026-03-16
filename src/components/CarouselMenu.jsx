@@ -83,34 +83,29 @@ const CarouselMenu = () => {
                             alignItems: "center",
                             justifyContent: "center",
                             minHeight: "56px",
-                            padding: "8px 0",
-                            borderBottom: isActive
+                            padding: "8px 0px 18px 0px",
+                            borderBottom: isActive || isHovered
                               ? "2px solid #00a5ec"
-                              : isHovered
-                                ? "2px solid #00a5ec"
-                                : "2px solid transparent",
+                              : "2px solid transparent",
                             transition: "all 0.2s",
                           }}
                         >
-                          {/* Active item: always show icon only (no label) */}
-                          {/* Non-active: show icon when NOT hovered, show label when hovered */}
-                          {isActive ? (
-                            // Active item always shows icon
-                            <i className="" style={{ color: "#00a5ec" }}>{item.icon}</i>
-                          ) : isHovered ? (
-                            // On hover: show ONLY label, hide icon
+                          {isHovered ? (
+                            // ✅ ALL items — show ONLY label on hover (including active/Newsfeed)
                             <p style={{
                               margin: 0,
                               fontSize: "13px",
                               fontWeight: "600",
-                              color: "#000000",
+                              color: "#000304",
                               whiteSpace: "nowrap",
                             }}>
                               {item.label}
                             </p>
                           ) : (
-                            // Default: show ONLY icon
-                            <i className="">{item.icon}</i>
+                            // Default (not hovered) — show icon, active one in blue
+                            <i className="" style={{ color: isActive ? "#00a5ec" : "currentColor" }}>
+                              {item.icon}
+                            </i>
                           )}
                         </a>
                       </div>

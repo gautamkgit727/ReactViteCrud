@@ -1,15 +1,23 @@
+import { useState } from "react";
+
 const Popups = () => {
+  const [autoPopup, setAutoPopup] = useState(true);   // auto-popup shows on load
+
   return (
     <>
-      {/* Invite Colleague Popup */}
+      {/* ── Invite Colleague Popup ── */}
       <div className="wraper-invite">
         <div className="popup">
-          <span className="popup-closed"><i className="icofont-close"></i></span>
+          <span className="popup-closed" onClick={() => {
+            document.querySelector('.wraper-invite').style.display = 'none';
+          }}>
+            <i className="icofont-close"></i>
+          </span>
           <div className="popup-meta">
             <div className="popup-head">
               <h5>
                 <i>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-mail">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
@@ -27,10 +35,14 @@ const Popups = () => {
         </div>
       </div>
 
-      {/* Send Message Popup */}
+      {/* ── Send Message Popup ── */}
       <div className="popup-wraper">
         <div className="popup">
-          <span className="popup-closed"><i className="icofont-close"></i></span>
+          <span className="popup-closed" onClick={() => {
+            document.querySelector('.popup-wraper').style.display = 'none';
+          }}>
+            <i className="icofont-close"></i>
+          </span>
           <div className="popup-meta">
             <div className="popup-head">
               <h5>
@@ -59,9 +71,13 @@ const Popups = () => {
         </div>
       </div>
 
-      {/* Side Slide Messages & Notifications */}
+      {/* ── Side Slide Messages & Notifications ── */}
       <div className="side-slide">
-        <span className="popup-closed"><i className="icofont-close"></i></span>
+        <span className="popup-closed" onClick={() => {
+          document.querySelector('.side-slide').classList.remove('active');
+        }}>
+          <i className="icofont-close"></i>
+        </span>
         <div className="slide-meta">
           <ul className="nav nav-tabs slide-btns">
             <li className="nav-item"><a className="active" href="#messages" data-toggle="tab">Messages</a></li>
@@ -115,15 +131,19 @@ const Popups = () => {
         </div>
       </div>
 
-      {/* New Post Popup */}
+      {/* ── New Post Popup ── */}
       <div className="post-new-popup">
         <div className="popup" style={{ width: "800px" }}>
-          <span className="popup-closed"><i className="icofont-close"></i></span>
+          <span className="popup-closed" onClick={() => {
+            document.querySelector('.post-new-popup').style.display = 'none';
+          }}>
+            <i className="icofont-close"></i>
+          </span>
           <div className="popup-meta">
             <div className="popup-head">
               <h5>
                 <i>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
@@ -157,7 +177,7 @@ const Popups = () => {
                     <label htmlFor="checkbox2"><span>My Story</span></label>
                   </div>
                 </div>
-                <input type="text" placeholder="https://www.youtube.com/watch?v=vgvsuiFlA-Y&t=56s" />
+                <input type="text" placeholder="https://www.youtube.com/watch?v=..." />
                 <button type="submit" className="main-btn">Publish</button>
               </form>
             </div>
@@ -165,13 +185,17 @@ const Popups = () => {
         </div>
       </div>
 
-      {/* Share Wrapper */}
+      {/* ── Share Wrapper ── */}
       <div className="share-wraper">
         <div className="share-options">
-          <span className="close-btn"><i className="icofont-close-circled"></i></span>
+          <span className="close-btn" onClick={() => {
+            document.querySelector('.share-wraper').style.display = 'none';
+          }}>
+            <i className="icofont-close-circled"></i>
+          </span>
           <h5>
             <i>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-share">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                 <polyline points="16 6 12 2 8 6"></polyline>
                 <line x1="12" y1="2" x2="12" y2="15"></line>
@@ -201,23 +225,27 @@ const Popups = () => {
         </div>
       </div>
 
-      {/* Cart Button */}
+      {/* ── Cart Button ── */}
       <div className="cart-product">
-        <a href="product-cart.html" title="View Cart" data-toggle="tooltip"><i className="icofont-cart-alt"></i></a>
+        <a href="product-cart.html" title="View Cart"><i className="icofont-cart-alt"></i></a>
         <span>03</span>
       </div>
 
-      {/* Chat Button */}
+      {/* ── Chat Button ── */}
       <div className="chat-live">
-        <a className="chat-btn" href="#" title="Start Live Chat" data-toggle="tooltip"><i className="icofont-facebook-messenger"></i></a>
+        <a className="chat-btn" href="#" title="Start Live Chat"><i className="icofont-facebook-messenger"></i></a>
         <span>07</span>
       </div>
 
-      {/* Chat Box */}
+      {/* ── Chat Box ── */}
       <div className="chat-box">
         <div className="chat-head">
           <h4>New Messages</h4>
-          <span className="clozed"><i className="icofont-close-circled"></i></span>
+          <span className="clozed" onClick={() => {
+            document.querySelector('.chat-box').style.display = 'none';
+          }}>
+            <i className="icofont-close-circled"></i>
+          </span>
           <form method="post">
             <input type="text" placeholder="To.." />
           </form>
@@ -258,7 +286,11 @@ const Popups = () => {
             <img src="images/resources/user13.jpg" alt="" />
             <h6>George Floyd</h6>
             <div className="frnd-opt">
-              <span className="close-mesage"><i className="icofont-close"></i></span>
+              <span className="close-mesage" onClick={() => {
+                document.querySelector('.chat-card').style.display = 'none';
+              }}>
+                <i className="icofont-close"></i>
+              </span>
             </div>
           </div>
           <div className="chat-list">
@@ -266,7 +298,7 @@ const Popups = () => {
               <li className="me">
                 <div className="chat-thumb"><img src="images/resources/chatlist1.jpg" alt="" /></div>
                 <div className="notification-event">
-                  <span className="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I'm gonna be handling the gifts and Jake's gonna get the drinks</span>
+                  <span className="chat-message-item">Hi James! Please remember to buy the food for tomorrow!</span>
                   <span className="notification-date">
                     <time className="entry-date updated">Yesterday at 8:10pm</time>
                     <i><img src="images/d-tick.png" alt="" /></i>
@@ -295,10 +327,14 @@ const Popups = () => {
         </div>
       </div>
 
-      {/* Create Room Popup */}
+      {/* ── Create Room Popup ── */}
       <div className="createroom-popup">
         <div className="popup">
-          <span className="popup-closed"><i className="icofont-close"></i></span>
+          <span className="popup-closed" onClick={() => {
+            document.querySelector('.createroom-popup').style.display = 'none';
+          }}>
+            <i className="icofont-close"></i>
+          </span>
           <div className="popup-meta">
             <div className="popup-head text-center">
               <h5 className="only-icon"><i className="icofont-video-cam"></i></h5>
@@ -338,29 +374,38 @@ const Popups = () => {
         </div>
       </div>
 
-      {/* Auto Popup */}
-      {/* <div className="auto-popup">
-        <div className="popup-innner">
-          <div className="popup-head">
-            <h4>We want to hear from you!</h4>
-          </div>
-          <div className="popup-meta">
-            <span>What are you struggling with right now? what we can help you with?</span>
-            <form method="post" className="inquiry-about">
-              <input type="text" placeholder="Your Answer" />
-              <h5>How did you hear about us?</h5>
-              {["Facebook", "instagram", "Google Search", "Twitter", "Whatsapp", "Other"].map((opt, i) => (
-                <label key={i}><input type="radio" name="hear" /> {opt}</label>
-              ))}
-              <input type="text" placeholder="Write Other" />
-              <button type="submit" className="primary button">Submit</button>
-              <button className="canceled button outline-primary" type="button">Cancel</button>
-            </form>
+      {/* ── Auto Popup (closes on Cancel click) ── */}
+      {autoPopup && (
+        <div className="auto-popup">
+          <div className="popup-innner">
+            <div className="popup-head">
+              <h4>We want to hear from you!</h4>
+            </div>
+            <div className="popup-meta">
+              <span>What are you struggling with right now? what we can help you with?</span>
+              <form method="post" className="inquiry-about">
+                <input type="text" placeholder="Your Answer" />
+                <h5>How did you hear about us?</h5>
+                {["Facebook", "instagram", "Google Search", "Twitter", "Whatsapp", "Other"].map((opt, i) => (
+                  <label key={i}><input type="radio" name="hear" /> {opt}</label>
+                ))}
+                <input type="text" placeholder="Write Other" />
+                <button type="button" className="primary button">Submit</button>
+                {/* ✅ Cancel closes the popup via React state */}
+                <button
+                  className="canceled button outline-primary mx-1"
+                  type="button"
+                  onClick={() => setAutoPopup(false)}
+                >
+                  Cancel
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div> */}
+      )}
 
-      {/* Image Modal */}
+      {/* ── Image Modal ── */}
       <div className="modal fade" id="img-comt">
         <div className="modal-dialog">
           <div className="modal-content">
