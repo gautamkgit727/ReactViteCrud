@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCommonData } from "../context/CommonContext";
 
 const menuLinks = [
   {
@@ -29,7 +30,7 @@ const menuLinks = [
 
 const CarouselMenu = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
+  const { sidebarToggle } = useCommonData();
   return (
     <section>
       <div className="white-bg">
@@ -39,7 +40,7 @@ const CarouselMenu = () => {
 
               {/* Hamburger */}
               <div className="col-lg-2">
-                <div className="sidemenu">
+                <div className="sidemenu" onClick={sidebarToggle}>
                   <i>
                     <svg id="side-menu" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
                       viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
@@ -83,24 +84,27 @@ const CarouselMenu = () => {
                             alignItems: "center",
                             justifyContent: "center",
                             minHeight: "56px",
-                            padding: "8px 0px 18px 0px",
+                            padding: "2px 0px 10px 0px",
                             borderBottom: isActive || isHovered
                               ? "2px solid #00a5ec"
                               : "2px solid transparent",
-                            transition: "all 0.2s",
+                            transition: "all 0.3s ease-in -out 0s",
                           }}
                         >
                           {isHovered ? (
                             // ✅ ALL items — show ONLY label on hover (including active/Newsfeed)
-                            <p style={{
-                              margin: 0,
+                            <span style={{
+                              margin: '0px',
                               fontSize: "13px",
                               fontWeight: "600",
                               color: "#000304",
                               whiteSpace: "nowrap",
+                              display: "flex",
+                              alignItems: "center",
+                              transition: "all 0.3s ease-in -out 0s"
                             }}>
                               {item.label}
-                            </p>
+                            </span>
                           ) : (
                             // Default (not hovered) — show icon, active one in blue
                             <i className="" style={{ color: isActive ? "#00a5ec" : "currentColor" }}>

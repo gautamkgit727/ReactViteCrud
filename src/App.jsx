@@ -19,40 +19,40 @@ function App() {
       </div>
 
       {/* <div className="theme-layout"> */}
-        <Header />
-        <Sidebar />
-        <CarouselMenu />
+      <Header />
+      <Sidebar />
+      <CarouselMenu />
 
-        <section>
-          <div className="gap">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div id="page-contents" className="row merged20">
-                    <div className="col-lg-3"><LeftSidebar /></div>
-                    <MainFeed />
-                    <div className="col-lg-3"><RightSidebar /></div>
-                  </div>
+      <section>
+        <div className="gap">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div id="page-contents" className="row merged20">
+                  <div className="col-lg-3"><LeftSidebar /></div>
+                  <MainFeed />
+                  <div className="col-lg-3"><RightSidebar /></div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <figure className="bottom-mockup">
-          <img src="images/footer.png" alt="" />
-        </figure>
-        <div className="bottombar">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <span>&copy; copyright All rights reserved by socimo 2020</span>
-              </div>
+      <figure className="bottom-mockup">
+        <img src="images/footer.png" alt="" />
+      </figure>
+      <div className="bottombar">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <span>&copy; copyright All rights reserved by socimo 2020</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <Popups />
+      <Popups />
       {/* </div> */}
     </>
   );

@@ -1,15 +1,37 @@
+import { useState, useEffect } from "react";
+import './Header.css'
+import SearchTop from './SearchTop';
 const Header = () => {
-  const recentSearches = [
-    { img: "user1.jpg", name: "Danial Carabal" },
-    { img: "user2.jpg", name: "Maria K" },
-    { img: "user3.jpg", name: "Fawad Khan" },
-    { img: "user4.jpg", name: "Danial Sandos" },
-    { img: "user5.jpg", name: "Jack Carter" },
-  ];
+  // const recentSearches = [
+  //   { img: "user1.jpg", name: "Danial Carabal" },
+  //   { img: "user2.jpg", name: "Maria K" },
+  //   { img: "user3.jpg", name: "Fawad Khan" },
+  //   { img: "user4.jpg", name: "Danial Sandos" },
+  //   { img: "user5.jpg", name: "Jack Carter" },
+  // ];
 
+
+
+  const [isSticky, setIsSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 250) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
       {/* Responsive Header */}
+
       <div className="responsive-header">
         <div className="logo res">
           <img src="images/logo.png" alt="" /><span>Socimo</span>
@@ -52,13 +74,15 @@ const Header = () => {
 
       {/* Main Header */}
       <header>
-        <div className="topbar stick">
+        <div className={`topbar stick sticky-top ${isSticky ? "sticky-nav" : ""}`}
+          style={{ top: isSticky ? "0px" : "-100px", transition: "0.5s ease" }}>
           <div className="logo">
             <img src="images/logo.png" alt="" /><span>Socimo</span>
           </div>
           <div className="searches">
-            <form method="post">
-              <input type="text" placeholder="Search..." />
+            <SearchTop />
+            {/* <form method="post">
+              <input type="text" placeholder="Search...xxx" />
               <button type="submit"><i className="icofont-search"></i></button>
               <span className="cancel-search"><i className="icofont-close"></i></span>
               <div className="recent-search">
@@ -75,7 +99,7 @@ const Header = () => {
                   ))}
                 </ul>
               </div>
-            </form>
+            </form> */}
           </div>
 
           <ul className="web-elements">

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useCommonData } from '../context/CommonContext';
 
 const Sidebar = () => {
   const [openMenus, setOpenMenus] = useState({ 0: true }); // Home open by default
-
+  const { isOpenSidebar, sidebarRef } = useCommonData();
   // Toggle submenu open/close
   const toggleMenu = (index) => {
     setOpenMenus(prev => ({
@@ -126,7 +127,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="sidebar">
+    <nav ref={sidebarRef} className={isOpenSidebar ? "sidebar hide" : "sidebar"}>
       <ul className="menu-slide">
 
         {menuItems.map((item, i) => (

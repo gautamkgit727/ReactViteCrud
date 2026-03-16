@@ -1,0 +1,9 @@
+/* CHANDAN  */
+.sticky-top {
+  width: 100%;
+  top: -100px;
+  transition: 0.5s ease !important;
+}
+.sticky-nav {
+  position: fixed !important;
+}

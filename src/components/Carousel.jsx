@@ -3,7 +3,7 @@ import { useState } from "react";
 const Carousel = ({ items, itemWidth = 160, renderItem }) => {
   const [index, setIndex] = useState(0);
   const gap = 16;
-  const visibleCount = 3;
+  const visibleCount = 4;
   const maxIndex = Math.max(0, items.length - visibleCount);
 
   const prev = () => setIndex(i => Math.max(0, i - 1));
