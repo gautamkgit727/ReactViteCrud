@@ -23,21 +23,6 @@ const MainFeed = () => {
     { bg: "story-card4.jpg", user: "user4.jpg", name: "Emma Watson" },
   ];
 
-  const chatRooms = [
-    { img: "user2.jpg", name: "Sara's Room", status: "online" },
-    { img: "user3.jpg", name: "jawad's Room", status: "offline" },
-    { img: "user4.jpg", name: "Jack's Room", status: "away" },
-    { img: "user5.jpg", name: "jobidn's Room", status: "online" },
-    { img: "user6.jpg", name: "Emily's Room", status: "offline" },
-  ];
-
-  const suggestedPeople = [
-    { img: "speak-1.jpg", name: "Amy Watson" },
-    { img: "speak-2.jpg", name: "Muhammad Khan" },
-    { img: "speak-3.jpg", name: "Sadia Gill" },
-    { img: "speak-2.jpg", name: "Ahmed Hassan" },
-  ];
-
   const videos = [
     { href: "https://www.youtube.com/watch?v=8iZTb9NWbz8", user: "user4.jpg", name: "Frank J.", time: "1 year ago", views: "3.1k" },
     { href: "https://www.youtube.com/watch?v=8itUNRIWVIs", user: "user2.jpg", name: "Maria K.", time: "2 weeks ago", views: "1.1k" },
