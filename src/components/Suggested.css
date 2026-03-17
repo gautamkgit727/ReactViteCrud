@@ -145,3 +145,7 @@
 .follow-btn:hover {
     background: #1a8fc2;
 }
+
+.swiper-slide-active {
+  transform: scale(1) !important;
+}
