@@ -2,7 +2,7 @@ const PostActions = () => (
   <div className="stat-tools">
     <div className="box">
       <div className="Like">
-        <a className="Like__link"><i className="icofont-like"></i> Like</a>
+        <a className="Like__link mx-1"><i className="icofont-like"></i> Like</a>
         <div className="Emojis">
           <div className="Emoji Emoji--like"><div className="icon icon--like"></div></div>
           <div className="Emoji Emoji--love"><div className="icon icon--heart"></div></div>
@@ -23,8 +23,8 @@ const PostActions = () => (
         <div className="Emoji Emoji--angry"><div className="icon icon--angry"></div></div>
       </div>
     </div>
-    <a href="#" className="comment-to"><i className="icofont-comment"></i> Comment</a>
-    <a href="#" className="share-to"><i className="icofont-share-alt"></i> Share</a>
+    <a href="#" className="comment-to mx-1"><i className="icofont-comment"></i> Comment</a>
+    <a href="#" className="share-to mx-1"><i className="icofont-share-alt"></i> Share</a>
     <div className="emoji-state">
       {[
         { img: "thumb.png", label: "Likes", names: ["Jhon Doe","Amara Sin","Sarah K."], more: "20+" },

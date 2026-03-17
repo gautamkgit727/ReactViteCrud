@@ -8,6 +8,9 @@ export default defineConfig({
     // Disable CSS minification to avoid lightningcss choking on template's vendor CSS
     cssMinify: false,
   },
+  resolve: {
+    alias: { 'react-slick': 'react-slick' }
+  },
   css: {
     // Skip processing public folder CSS entirely
     postcss: {},

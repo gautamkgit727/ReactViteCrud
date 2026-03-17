@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // ─── SVG Icons ────────────────────────────────────────────────────────────────
 const IconMenu = () => (
+
+
+
+
+
+
   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" />
   </svg>
@@ -532,6 +538,26 @@ const LeftSidebar = () => (
     </div>
 
     {/* Useful Links */}
+    <UserThumbList />
+    {/* {
+      const [isSticky, setIsSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 981) {
+      setIsSticky(true);
+      } else {
+      setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+    {isSticky ? "widget web-links stick-widget fff" : "widget web-links stick-widget"}
+    }
     <div className="widget web-links stick-widget">
       <h4 className="widget-title">Useful Links <a href="#" className="see-all">See All</a></h4>
       <ul>
@@ -540,7 +566,7 @@ const LeftSidebar = () => (
         ))}
       </ul>
       <p>&copy; Socimo 2020. All Rights Reserved.</p>
-    </div>
+    </div> */}
   </aside>
 );
 
@@ -1140,6 +1166,7 @@ const PageLoader = () => (
 
 // ─── MAIN FEED COMPONENT ──────────────────────────────────────────────────────
 export default function Feed() {
+
   return (
     <div className="theme-layout">
       <PageLoader />

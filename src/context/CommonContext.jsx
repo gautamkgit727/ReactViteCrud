@@ -29,27 +29,28 @@ const CommonContextData = ({ children }) => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
-
     // ==================== CONTEXT VALUE ==================
+
     const value = useMemo(() => ({
         sidebarToggle, isOpenSidebar, bodySidebarToggle, sidebarRef
     }), [isOpenSidebar]);
+
 
     return (
         <commonContext.Provider value={value}>
             {children}
         </commonContext.Provider>
-    );
-};
+    )
+}
 
 // ==================== CUSTOM HOOK ==================
+
 const useCommonData = () => {
-    const context = useContext(commonContext);
+    const context = useContext(commonContext)
     if (!context) {
         throw new Error("useProduct must be used within ProductContextData");
     }
     return context;
-};
+}
 
-// eslint-disable-next-line react-refresh/only-export-components
-export { CommonContextData, useCommonData };
+export { CommonContextData, useCommonData }

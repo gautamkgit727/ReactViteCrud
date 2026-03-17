@@ -2,6 +2,10 @@ import PostActions from './PostActions';
 import PostStats from './PostStats';
 import PostMenu from './PostMenu';
 import Carousel from './Carousel';
+import ChatRoom from './ChatRoom';
+import Suggested from './Suggested';
+import SponsorsAds from './SponsorsAds';
+
 
 const VerifiedBadge = ({ color = "#7fba00" }) => (
   <em>
@@ -108,7 +112,8 @@ const MainFeed = () => {
         </div>
 
         <div style={{ padding: "12px 0" }}>
-          <Carousel
+          <ChatRoom />
+          {/* <Carousel
             items={chatRooms}
             itemWidth={140}
             renderItem={(room) => (
@@ -133,53 +138,15 @@ const MainFeed = () => {
                 </div>
               </div>
             )}
-          />
+          /> */}
         </div>
       </div>
 
       {/* ===== SUGGESTED FRIENDS with arrows ===== */}
-      <div className="main-wraper">
-        <div className="user-post">
-          <div className="friend-info">
-            <figure><i className="icofont-learn"></i></figure>
-            <div className="friend-name">
-              <ins><a href="time-line.html">Suggested</a></ins>
-              <span><i className="icofont-runner-alt-1"></i> Follow similar People</span>
-            </div>
-
-            <div style={{ padding: "12px 0" }}>
-              <Carousel
-                items={suggestedPeople}
-                itemWidth={180}
-                renderItem={(p) => (
-                  <div style={{
-                    display: "flex", flexDirection: "column", alignItems: "center",
-                    border: "1px solid #eee", borderRadius: "8px",
-                    padding: "15px 10px", textAlign: "center", background: "#fff",
-                  }}>
-                    <figure style={{ margin: "0 0 8px 0" }}>
-                      <img src={`images/resources/${p.img}`} alt=""
-                        style={{ width: "100px", height: "100px", borderRadius: "8px", objectFit: "cover" }} />
-                    </figure>
-                    <span style={{ fontWeight: "600", fontSize: "14px", display: "block", marginBottom: "4px" }}>
-                      {p.name}
-                    </span>
-                    <ins style={{ fontSize: "12px", color: "#1db9aa", display: "block", marginBottom: "10px", textDecoration: "none" }}>
-                      Department of Socilolgy
-                    </ins>
-                    <a href="#" className="main-btn" data-ripple="" style={{ fontSize: "12px", padding: "6px 14px" }}>
-                      <i className="icofont-star"></i> Follow
-                    </a>
-                  </div>
-                )}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Suggested />
 
       {/* Audio Post */}
-      <div className="main-wraper">
+      <div className="main-wraper mt-4">
         <div className="user-post">
           <div className="friend-info">
             <figure><VerifiedBadge /><img alt="" src="images/resources/user7.jpg" /></figure>
@@ -374,7 +341,7 @@ const MainFeed = () => {
       </div>
 
       {/* Shared Link Post */}
-      <div className="main-wraper">
+      {/* <div className="main-wraper">
         <div className="user-post">
           <div className="friend-info">
             <figure><VerifiedBadge /><img alt="" src="images/resources/user5.jpg" /></figure>
@@ -392,6 +359,177 @@ const MainFeed = () => {
             </div>
           </div>
         </div>
+      </div> */}
+
+
+      {/* Andrew Jhon Shared Link Post with comments */}
+      <div className="main-wraper">
+        <div className="user-post">
+          <div className="friend-info">
+            <figure><VerifiedBadge /><img alt="" src="images/resources/user5.jpg" /></figure>
+            <div className="friend-name">
+              <PostMenu />
+              <ins><a href="time-line.html">Andrew Jhon</a> Shared Link</ins>
+              <span><i className="icofont-globe"></i> published: Sep,15 2020</span>
+            </div>
+            <div className="post-meta">
+              <em>
+                <a href="https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538" target="_blank" rel="noreferrer">
+                  https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538
+                </a>
+              </em>
+              <figure>
+                <span>fetched-image</span>
+                <img src="images/resources/laptop.png" alt="" />
+              </figure>
+              <a href="https://themeforest.net/item/winku-social-network-toolkit-responsive-template/22363538" className="post-title" target="_blank" rel="noreferrer">
+                Winku Social Network with Company Pages Theme
+              </a>
+              <p>
+                &quot;Winku&quot; is a social community mobile app kit with features. user can use this app for sharing blog, posts, timeline, create Group, Create Pages, chat/Messages, Movies sharing, QA, and Much More.
+              </p>
+              <PostStats />
+              {/* PostActions with comments open */}
+              <div className="stat-tools">
+                <div className="box">
+                  <div className="Like">
+                    <a className="Like__link"><i className="icofont-like"></i> Like</a>
+                    <div className="Emojis">
+                      <div className="Emoji Emoji--like"><div className="icon icon--like"></div></div>
+                      <div className="Emoji Emoji--love"><div className="icon icon--heart"></div></div>
+                      <div className="Emoji Emoji--haha"><div className="icon icon--haha"></div></div>
+                      <div className="Emoji Emoji--wow"><div className="icon icon--wow"></div></div>
+                      <div className="Emoji Emoji--sad"><div className="icon icon--sad"></div></div>
+                      <div className="Emoji Emoji--angry"><div className="icon icon--angry"></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="box">
+                  <div className="Emojis">
+                    <div className="Emoji Emoji--like"><div className="icon icon--like"></div></div>
+                    <div className="Emoji Emoji--love"><div className="icon icon--heart"></div></div>
+                    <div className="Emoji Emoji--haha"><div className="icon icon--haha"></div></div>
+                    <div className="Emoji Emoji--wow"><div className="icon icon--wow"></div></div>
+                    <div className="Emoji Emoji--sad"><div className="icon icon--sad"></div></div>
+                    <div className="Emoji Emoji--angry"><div className="icon icon--angry"></div></div>
+                  </div>
+                </div>
+                <a href="#" className="comment-to"><i className="icofont-comment"></i> Comment</a>
+                <a href="#" className="share-to"><i className="icofont-share-alt"></i> Share</a>
+                <div className="emoji-state">
+                  {[
+                    { img: "thumb.png", label: "Likes", names: ["Jhon Doe", "Amara Sin", "Sarah K."], more: "20+" },
+                    { img: "heart.png", label: "Love", names: ["Amara Sin", "Jhon Doe"], more: "10+" },
+                    { img: "smile.png", label: "Happy", names: ["Sarah K.", "Jhon Doe", "Amara Sin"], more: "100+" },
+                    { img: "weep.png", label: "Dislike", names: ["Danial Carbal", "Amara Sin", "Sarah K."], more: "15+" },
+                  ].map((e, i) => (
+                    <div className="popover_wrapper" key={i}>
+                      <a className="popover_title" href="#"><img alt="" src={`images/smiles/${e.img}`} /></a>
+                      <div className="popover_content">
+                        <span><img alt="" src={`images/smiles/${e.img}`} /> {e.label}</span>
+                        <ul className="namelist">
+                          {e.names.map((n, j) => <li key={j}>{n}</li>)}
+                          <li><span>{e.more} more</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
+                  <p>10+</p>
+                </div>
+
+                {/* Comments section — open by default (display: block) */}
+                <div className="new-comment" style={{ display: "block" }}>
+                  <form method="post">
+                    <input type="text" placeholder="write comment" />
+                    <button type="submit"><i className="icofont-paper-plane"></i></button>
+                  </form>
+                  <div className="comments-area">
+                    <ul>
+                      <li>
+                        <figure><img alt="" src="images/resources/user1.jpg" /></figure>
+                        <div className="commenter">
+                          <h5><a href="#">Jack Carter</a></h5>
+                          <span>2 hours ago</span>
+                          <p>i think that some how, we learn who we really are and then live with that decision, great post!</p>
+                          <span>you can view the more detail via link</span>
+                          <a href="#">https://www.youtube.com/watch?v=HpZgwHU1GcI</a>
+                        </div>
+                        <a title="Like" href="#"><i className="icofont-heart"></i></a>
+                        <a title="Reply" href="#" className="reply-coment"><i className="icofont-reply"></i></a>
+                      </li>
+                      <li>
+                        <figure><img alt="" src="images/resources/user2.jpg" /></figure>
+                        <div className="commenter">
+                          <h5><a href="#">Ching xang</a></h5>
+                          <span>2 hours ago</span>
+                          <p>i think that some how, we learn who we really are and then live with that decision, great post!</p>
+                        </div>
+                        <a title="Like" href="#"><i className="icofont-heart"></i></a>
+                        <a title="Reply" href="#" className="reply-coment"><i className="icofont-reply"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* YouTube Embed Post */}
+      <div className="main-wraper">
+        <div className="user-post">
+          <div className="friend-info">
+            <figure><VerifiedBadge /><img alt="" src="images/resources/user2.jpg" /></figure>
+            <div className="friend-name">
+              <PostMenu />
+              <ins><a href="time-line.html">Maria k.</a> Shared Link</ins>
+              <span><i className="icofont-globe"></i> published: Sep,15 2020</span>
+            </div>
+            <div className="post-meta">
+              <em>
+                <a href="https://www.youtube.com/embed/zdow47FQRfQ" target="_blank" rel="noreferrer">
+                  https://www.youtube.com/embed/zdow47FQRfQ
+                </a>
+              </em>
+              <iframe
+                height="285"
+                src="https://www.youtube.com/embed/zdow47FQRfQ"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="zdow47FQRfQ"
+                style={{ width: "100%", border: "none" }}
+              ></iframe>
+              <p>
+                Cookie? Biscuit? Bikkie? They all mean the same thing! Our lovely English teachers will quickly show you some pronunciation and vocabulary differences from Australia, America, and England!
+              </p>
+              <PostStats /><PostActions />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* GIF Post */}
+      <div className="main-wraper">
+        <div className="user-post">
+          <div className="friend-info">
+            <figure><VerifiedBadge /><img alt="" src="images/resources/user2.jpg" /></figure>
+            <div className="friend-name">
+              <PostMenu />
+              <ins><a href="time-line.html">Maria k.</a> Shared Link</ins>
+              <span><i className="icofont-globe"></i> published: Sep,15 2020</span>
+            </div>
+            <div className="post-meta">
+              <img
+                className="gif"
+                src="images/giphy.png"
+                data-gif="images/giphy-sample.gif"
+                alt="gif"
+              />
+              <PostStats /><PostActions />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Sponsored */}
@@ -404,7 +542,8 @@ const MainFeed = () => {
               <ins><a href="time-line.html">Sponsors Ads</a></ins>
               <span><i className="icofont-globe"></i> Sponsor</span>
             </div>
-            <div className="post-meta">
+            <SponsorsAds />
+            {/* <div className="post-meta">
               <ul className="sponsored-caro">
                 {[
                   { img: "sponsor-prod1.jpg", name: "Aloevera Juice 1 liter", price: "$24" },
@@ -433,7 +572,7 @@ const MainFeed = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
